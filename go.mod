@@ -1,4 +1,4 @@
-module github.com/nrdcg/porkbun
+module github.com/nodicloud/go-porkbun
 
 go 1.21
 
