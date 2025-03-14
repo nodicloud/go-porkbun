@@ -13,7 +13,11 @@ import (
 	"time"
 )
 
+// https://porkbun.com/api/json/v3/documentation#apiHost
 const defaultBaseURL = "https://api.porkbun.com/api/json/v3/"
+
+// https://porkbun.com/api/json/v3/documentation#ipv4
+const ipv4onlyBaseURL = "https://api-ipv4.porkbun.com/api/json/v3/"
 
 const statusSuccess = "SUCCESS"
 
@@ -24,14 +28,16 @@ const DefaultTTL = "300"
 type Client struct {
 	secretAPIKey string
 	apiKey       string
-
-	BaseURL    *url.URL
-	HTTPClient *http.Client
+	BaseURL      *url.URL
+	HTTPClient   *http.Client
 }
 
 // New creates a new Client.
-func New(secretAPIKey, apiKey string) *Client {
+func New(secretAPIKey, apiKey string, ipv4only bool) *Client {
 	baseURL, _ := url.Parse(defaultBaseURL)
+	if ipv4only {
+		baseURL, _ = url.Parse(ipv4onlyBaseURL)
+	}
 
 	return &Client{
 		secretAPIKey: secretAPIKey,

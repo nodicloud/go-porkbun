@@ -44,7 +44,7 @@ func setup(t *testing.T, pattern, filename string) *Client {
 		_, _ = rw.Write(data)
 	})
 
-	client := New("secret", "key")
+	client := New("secret", "key", true)
 	client.BaseURL, _ = url.Parse(server.URL)
 
 	return client
@@ -147,7 +147,7 @@ func TestClient_DeleteRecord_apiError(t *testing.T) {
 		rw.WriteHeader(http.StatusServiceUnavailable)
 	})
 
-	client := New("secret", "key")
+	client := New("secret", "key", true)
 	client.BaseURL, _ = url.Parse(server.URL)
 
 	err := client.DeleteRecord(context.Background(), "example.com", 1)
