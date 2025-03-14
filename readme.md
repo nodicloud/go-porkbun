@@ -14,23 +14,23 @@ porkbun is a Go client library for accessing the Porkbun API.
 package main
 
 import (
-	"context"
-	"fmt"
+ "context"
+ "fmt"
 
-	"github.com/nodicloud/go-porkbun"
+ "github.com/nodicloud/go-porkbun"
 )
 
 func main() {
-	client := porkbun.New("secret", "key")
+ client := porkbun.New("secret", "key")
 
-	ctx := context.Background()
+ ctx := context.Background()
 
-	yourIP, err := client.Ping(ctx)
-	if err != nil {
-		panic(err)
-	}
+ yourIP, err := client.Ping(ctx)
+ if err != nil {
+  panic(err)
+ }
 
-	fmt.Println(yourIP)
+ fmt.Println(yourIP)
 }
 ```
 
